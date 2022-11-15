@@ -1,5 +1,7 @@
 const boxes = document.querySelectorAll('[data-index]');
 let circleturn ;
+let isWinner = true;
+let i = 0
 const X_class = 'x';
 const circle_class= 'o';
 const win = [                            //winning combinations
@@ -7,6 +9,8 @@ const win = [                            //winning combinations
       [0, 3, 6], [1, 4, 7], [2, 5, 8], //vertical
       [0, 4, 8], [2, 4, 6]            //diagonal
 ]
+
+const mebox = document.querySelector('.message');
 
 boxes.forEach(box => {
    box.addEventListener('click', handleClick, {once: true}) 
@@ -20,6 +24,18 @@ function handleClick(event){
      //check for winner
      if(checkWin(currentClass)){
        console.log('winner');
+       mebox.innerText = `${currentClass} Wins`
+       mebox.style.display = 'block';
+       isWinner = true;
+     }
+     else{
+         i ++;
+         isWinner = false;
+     }
+
+     if(i === 9 && isWinner === false){
+       mebox.innerText = `DRAW`
+       mebox.style.display = 'block';
      }
 
      //change turn
@@ -41,3 +57,9 @@ function checkWin(currentClass){
          })   
       })
 }
+
+//reset button
+const reset = document.getElementById('resetbt');
+reset.addEventListener('click', () => {
+      location.reload();
+})

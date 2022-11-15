@@ -100,3 +100,21 @@ body{
     height: 60px;
     background-color: rgb(253, 255, 122);
 }
+
+.message{
+    
+    position: absolute;
+    z-index: 1;
+    height: 600px;
+    width: 600px;
+    bottom: 35px;
+    left: 405px;
+    background-color: rgb(252, 190, 109);
+    opacity: 0.7;
+    border: black 1px solid;
+    font-size: 5rem;
+    text-align: center;
+    display: none;
+
+}
+
